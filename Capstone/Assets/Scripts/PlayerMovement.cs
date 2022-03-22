@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField]
-    private float walkSpeed;
 
     private Rigidbody body;
     bool wDown;
@@ -25,9 +23,9 @@ public class PlayerMovement : MonoBehaviour
     {
         float _moveDirX = Input.GetAxisRaw("Horizontal");
         float _moveDirZ = Input.GetAxisRaw("Vertical");
-        Vector3 direction = new Vector3(_moveDirX, transform.position.y, _moveDirZ);
+        Vector3 direction = new Vector3(_moveDirX, 0, _moveDirZ);
 
-        body.MovePosition(transform.position + direction * Time.deltaTime);
+        body.MovePosition(transform.position + direction * Time.deltaTime * moveSpeed);
         if (direction != Vector3.zero)
         {
             float angle = Mathf.Atan2(_moveDirX, _moveDirZ) * Mathf.Rad2Deg;
@@ -45,36 +43,5 @@ public class PlayerMovement : MonoBehaviour
             anim.SetBool("IsRun", false);
     }
 }
-    //void Start()
-    //{
-        //    anim=GetComponent<Animator>();
-    //    myRigid = GetComponent<Rigidbody>();
-    //}
-
-    //// Update is called once per frame
-    //void Update()
-    //{
-
-    //    Move();
-    //}
-
-    //private void Move()
-    //{
-    //    float _moveDirX = Input.GetAxisRaw("Horizontal");
-    //    float _moveDirZ = Input.GetAxisRaw("Vertical");
-    //    wDown = Input.GetButton("Walk");
-
-    //    Vector3 _moveHorizontal = transform.right * _moveDirX;
-    //    Vector3 _moveVertical = transform.forward * _moveDirZ;
-
-    //    Vector3 _velocity = (_moveHorizontal + _moveVertical).normalized * walkSpeed;
-
-    //    myRigid.MovePosition(transform.position + _velocity * Time.deltaTime);
-
-    //    //anim.SetBool("IsRun", _velocity != Vector3.zero);
-    //    //anim.SetBool("IsWalk", wDown);
-
-
-    //}
 
 
