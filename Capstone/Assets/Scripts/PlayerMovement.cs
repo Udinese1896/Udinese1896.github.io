@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody body;
     bool wDown;
      Animator anim;
+    public GameObject FButton;
 
     public float moveSpeed = 10.0f;
     public float rotationSpeed = 5.0f;
@@ -41,6 +42,22 @@ public class PlayerMovement : MonoBehaviour
             anim.SetBool("IsRun", true);
         else
             anim.SetBool("IsRun", false);
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.transform.tag == "NPC")
+        {
+            FButton.SetActive(true);
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                Debug.Log("Talk with NPC");
+            }
+        }
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        FButton.SetActive(false);
     }
 }
 
