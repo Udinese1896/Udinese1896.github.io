@@ -14,9 +14,11 @@ public class NPCAreaController : MonoBehaviour
     void Update()
     {
 
+
     }
 
-    private void OnTriggerEnter(Collider other)
+    
+    private void OnColliderStay(Collision other)
     {
         if (other.gameObject.tag == "NPC")
         {

@@ -6,9 +6,17 @@ public class NPCsentence : MonoBehaviour
 {
     public string[] sentences;
 
-    private void OnMouseDown()
+    private void OnCollisionStay(Collision collision)
     {
-        if(DialogueManager.instance.dialoguegroup.alpha == 0)
-        DialogueManager.instance.Ondialogue(sentences);
+        if (collision.transform.tag == "Player")
+        {
+
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                if (DialogueManager.instance.dialoguegroup.alpha == 0)
+                    DialogueManager.instance.Ondialogue(sentences);
+            }
+        }
     }
+
 }
