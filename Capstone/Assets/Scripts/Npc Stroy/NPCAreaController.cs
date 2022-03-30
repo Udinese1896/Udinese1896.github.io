@@ -18,7 +18,7 @@ public class NPCAreaController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "NPC")
         {
             GameObject panel = GameObject.FindWithTag("Canvas").transform.Find("Panel").gameObject;
             if (panel == null)
