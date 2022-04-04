@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     bool wDown;
      Animator anim;
     public GameObject FButton;
+    public GameObject FE;//소화기
+    public GameObject sPos;//발사 위치
 
     public float moveSpeed = 10.0f;
     public float rotationSpeed = 5.0f;
@@ -42,6 +44,11 @@ public class PlayerMovement : MonoBehaviour
             anim.SetBool("IsRun", true);
         else
             anim.SetBool("IsRun", false);
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+                Instantiate(FE, sPos.transform.position, sPos.transform.rotation);
+        }
     }
 
     private void OnCollisionStay(Collision collision)
