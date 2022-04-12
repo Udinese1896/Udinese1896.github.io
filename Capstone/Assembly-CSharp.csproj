@@ -54,12 +54,12 @@
      <Compile Include="Assets\Supercyan Character Pack Free Sample\Scripts\SimpleSampleCharacterControl.cs" />
      <Compile Include="Assets\EffectExamples\Shared\Scripts\DecalDestroyer.cs" />
      <Compile Include="Assets\EffectExamples\TutorialInfo\Scripts\Readme.cs" />
-     <Compile Include="Assets\Enviroment\enviroment\Office building\scripts\Fix_elevator_fall.cs" />
+     <Compile Include="Assets\Office\Enviroment\enviroment\Office building\scripts\Fix_elevator_fall.cs" />
      <Compile Include="Assets\Scripts\CameraMovement.cs" />
-     <Compile Include="Assets\Enviroment\enviroment\Office building\scripts\evelator_controll.cs" />
+     <Compile Include="Assets\Office\Enviroment\enviroment\Office building\scripts\evelator_controll.cs" />
      <Compile Include="Assets\Scripts\FireExtinguisher.cs" />
      <Compile Include="Assets\EffectExamples\Shared\Scripts\ParticleExamples.cs" />
-     <Compile Include="Assets\Enviroment\enviroment\Office building\scripts\Door.cs" />
+     <Compile Include="Assets\Office\Enviroment\enviroment\Office building\scripts\Door.cs" />
      <Compile Include="Assets\FurnishedCabin\Scripts\MoveableObject.cs" />
      <Compile Include="Assets\FurnishedCabin\Scripts\Player\PlayerLook.cs" />
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
@@ -67,8 +67,8 @@
      <Compile Include="Assets\EffectExamples\Shared\Scripts\GunShoot.cs" />
      <Compile Include="Assets\Scripts\NPCMovement.cs" />
      <Compile Include="Assets\Scripts\Npc Stroy\NPCAreaController.cs" />
-     <Compile Include="Assets\Enviroment\enviroment\Office building\scripts\pass_on_parent.cs" />
-     <Compile Include="Assets\Enviroment\enviroment\Office building\scripts\DoorAction.cs" />
+     <Compile Include="Assets\Office\Enviroment\enviroment\Office building\scripts\pass_on_parent.cs" />
+     <Compile Include="Assets\Office\Enviroment\enviroment\Office building\scripts\DoorAction.cs" />
      <Compile Include="Assets\Scripts\Npc Stroy\NPCsentence.cs" />
      <Compile Include="Assets\Scripts\Fire.cs" />
      <Compile Include="Assets\FurnishedCabin\Scripts\MoveObjectController.cs" />
@@ -83,7 +83,7 @@
      <None Include="Assets\laxer Assets\creek\Shaders\RunningWater.shader" />
      <None Include="Assets\Supercyan Character Pack Free Sample\Shaders\SupercyanShaderLighting.cginc" />
      <None Include="Assets\EffectExamples\Shared\Shaders\SurfaceShader_VC.shader" />
-     <None Include="Assets\Enviroment\enviroment\Office building\Read me.txt" />
+     <None Include="Assets\Office\Enviroment\enviroment\Office building\Read me.txt" />
  <Reference Include="UnityEngine">
  <HintPath>D:/Unity/2020.3.17f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>

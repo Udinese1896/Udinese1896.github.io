@@ -15,6 +15,7 @@ public class NPCsentence : MonoBehaviour
             {
                 if (DialogueManager.instance.dialoguegroup.alpha == 0)
                     DialogueManager.instance.Ondialogue(sentences);
+
             }
         }
     }

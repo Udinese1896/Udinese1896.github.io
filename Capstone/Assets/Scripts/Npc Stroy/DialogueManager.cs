@@ -85,4 +85,14 @@ public class DialogueManager : MonoBehaviour, IPointerClickHandler
         if (!istyping)
             NextSentence();
     }
+
+    private void OnCollisionStay(Collision collision)
+    {
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                if (!istyping)
+                    NextSentence();
+            }
+        }
+
 }
