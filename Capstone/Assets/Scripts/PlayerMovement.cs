@@ -66,6 +66,22 @@ public class PlayerMovement : MonoBehaviour
     {
         FButton.SetActive(false);
     }
+
+     void OnTriggerStay(Collider other)
+    {
+        if (other.transform.tag == "Trigger")
+        {
+            FButton.SetActive(true);
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                Debug.Log("Interaction with Cube");
+            }
+        }
+    }
+     void OnTriggerExit(Collider other)
+    {
+        FButton.SetActive(false);
+    }
 }
 
 
