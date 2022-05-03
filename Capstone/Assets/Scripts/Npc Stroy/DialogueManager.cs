@@ -75,8 +75,14 @@ public class DialogueManager : MonoBehaviour, IPointerClickHandler
 
         if (DialogueText.text.Equals(currentSentence))
         {
+
             NextText.SetActive(true);
             istyping = false;
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                if (!istyping)
+                    NextSentence();
+            }
         }
     }
 
