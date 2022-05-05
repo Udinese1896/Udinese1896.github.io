@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+
 
 public class DoorCube : MonoBehaviour
 {
@@ -18,12 +18,7 @@ public class DoorCube : MonoBehaviour
     }
     void OnTriggerStay(Collider other)
     {
-        if (other.transform.tag == "Player") 
-        {
-            if(Input.GetKeyDown(KeyCode.F))
-            SceneManager.LoadScene("MF_Mountain");
 
-        }
     }
 
     

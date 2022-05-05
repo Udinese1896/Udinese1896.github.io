@@ -5,16 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 1
-    path: Assets/laxer Assets/creek/mountain creek demo.unity
-    guid: a50ff117eb0d08d4d8d03fc3e1f12e07
   - enabled: 1
     path: Assets/Scenes/MF_House.unity
     guid: 0bce5907d797a4cd8b0660dc119867e8
   - enabled: 1
     path: Assets/Scenes/MF_Mountain.unity
-    guid: d5673b812d5fa6d4abc53777e9b3fa6b
+    guid: a12f9167763948847b1afacaa85d5fc5
   m_configObjects: {}
