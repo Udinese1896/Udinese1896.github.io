@@ -16,10 +16,7 @@ public class DoorCube : MonoBehaviour
     {
         
     }
-    void OnTriggerStay(Collider other)
-    {
 
-    }
 
     
 }
