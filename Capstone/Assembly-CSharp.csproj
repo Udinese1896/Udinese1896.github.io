@@ -114,6 +114,7 @@
      <Compile Include="Assets\Supercyan\Scripts\AimingAssets\RelativeAimController.cs" />
      <Compile Include="Assets\Supercyan\Scripts\Items\AccessoryItemLogic.cs" />
      <Compile Include="Assets\Supercyan\Scripts\CharacterMaker\Hand.cs" />
+     <Compile Include="Assets\Scripts\Building\PlayerMovement.cs" />
      <Compile Include="Assets\FurnishedCabin\Scripts\MoveObjectController.cs" />
      <Compile Include="Assets\Supercyan\Scripts\ItemAssets\ItemHoldLogic.cs" />
      <Compile Include="Assets\Supercyan\Scripts\AimingAssets\CharacterWeaponAnimator.cs" />

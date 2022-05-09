@@ -41,6 +41,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 555c35f85c4be8f4d984863013467aed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FirstTableConversation: {fileID: 0}
+  SecondTableConversation: {fileID: 0}
   FButton: {fileID: 0}
   FE: {fileID: 8136644421752499781, guid: 18df12e6cb1096743ae3b6529ce293da, type: 3}
   sPos: {fileID: 4092680102352875357}

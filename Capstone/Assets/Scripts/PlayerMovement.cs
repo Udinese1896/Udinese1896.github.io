@@ -109,6 +109,26 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
+        if (other.transform.tag == "ComputerTable")
+        {
+
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                FButton.SetActive(false);
+                if (interTablefirst == 0)
+                {
+
+                    Debug.Log("Interaction with Cube");
+                    ConversationManager.Instance.StartConversation(FirstTableConversation);
+                    interTablefirst += 1;
+                }
+                else
+                {
+                    ConversationManager.Instance.StartConversation(SecondTableConversation);
+                }
+            }
+        }
+
         if (other.transform.tag == "TV")
         {
             FButton.SetActive(true);
