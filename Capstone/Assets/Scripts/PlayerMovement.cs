@@ -75,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.transform.tag != "Trigger")
             FButton.SetActive(true);
-    }
+    }   
 
      void OnTriggerStay(Collider other)
     {

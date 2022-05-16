@@ -23,4 +23,12 @@ public class NPCMovement : MonoBehaviour
         }
     }
 
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.transform.tag == "Player")
+        {
+            transform.LookAt(other.transform);
+        }
+    }
+
 }

@@ -11,6 +11,8 @@ TagManager:
   - Table
   - ComputerTable
   - TV
+  - Smoke
+  - NPCCube
   layers:
   - Default
   - TransparentFX

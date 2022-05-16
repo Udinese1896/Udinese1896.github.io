@@ -7,22 +7,34 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement_Mountain : MonoBehaviour
 {
-    public NPCConversation FirstTableConversation;
-    public NPCConversation SecondTableConversation;
+    public NPCConversation FirstDialouge;
+    public NPCConversation FirstSmokeDialouge;
+    public NPCConversation SecondSmokeDialouge;
+    public NPCConversation NPCDialouge;
+    public NPCConversation FireDialouge;
+    public NPCConversation FinalDialouge;
+    public GameObject Smoke;
+    public GameObject NPCS;
     private Rigidbody body;
     bool wDown;
     Animator anim;
     public GameObject FButton;
-    public GameObject FE;//소화기
-    public GameObject sPos;//발사 위치
+  //  public GameObject FE;//소화기
+  //  public GameObject sPos;//발사 위치
 
     public float moveSpeed = 10.0f;
     public float rotationSpeed = 5.0f;
     private int interTablefirst = 0;
+    private bool bFirstSmoke = false;
+    private bool bSecondSmoke = false;
+    private bool bNPC = false;
+
     void Start()
     {
         anim = GetComponent<Animator>();
         body = GetComponent<Rigidbody>();
+        ConversationManager.Instance.StartConversation(FirstDialouge);
+       
     }
 
     void Update()
@@ -49,7 +61,7 @@ public class PlayerMovement_Mountain : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                Instantiate(FE, sPos.transform.position, sPos.transform.rotation);
+              //  Instantiate(FE, sPos.transform.position, sPos.transform.rotation);
             }
 
 
@@ -73,62 +85,50 @@ public class PlayerMovement_Mountain : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        if (other.transform.tag != "Trigger")
-            FButton.SetActive(true);
+
     }
 
     void OnTriggerStay(Collider other)
     {
         if (other.transform.tag == "Door")
         {
-            FButton.SetActive(true);
-            if (Input.GetKeyDown(KeyCode.F))
+            if (bFirstSmoke == false)
             {
-                SceneManager.LoadScene("MF_Mountain");
-                FButton.SetActive(false);
-                Debug.Log("Interaction with Door");
+                ConversationManager.Instance.StartConversation(FirstSmokeDialouge);
+                bFirstSmoke = true;
             }
         }
 
-        if (other.transform.tag == "Table")
+        if (other.transform.tag == "Smoke")
         {
 
-            if (Input.GetKeyDown(KeyCode.F))
+            if (bFirstSmoke == true && bSecondSmoke == false)
             {
-                FButton.SetActive(false);
-                if (interTablefirst == 0)
-                {
-
-                    Debug.Log("Interaction with Cube");
-                    ConversationManager.Instance.StartConversation(FirstTableConversation);
-                    interTablefirst += 1;
-                }
-                else
-                {
-                    ConversationManager.Instance.StartConversation(SecondTableConversation);
-                }
+                ConversationManager.Instance.StartConversation(SecondSmokeDialouge);
+                bSecondSmoke = true;
             }
+            if (ConversationManager.Instance.IsConversationActive==false)
+            {
+                Smoke.SetActive(false);
+            }
+
         }
 
-        if (other.transform.tag == "ComputerTable")
+        if (other.transform.tag == "NPCCube")
         {
 
-            if (Input.GetKeyDown(KeyCode.F))
+            if (bFirstSmoke == true && bSecondSmoke == true &&bNPC==false)
             {
-                FButton.SetActive(false);
-                if (interTablefirst == 0)
-                {
-
-                    Debug.Log("Interaction with Cube");
-                    ConversationManager.Instance.StartConversation(FirstTableConversation);
-                    interTablefirst += 1;
-                }
-                else
-                {
-                    ConversationManager.Instance.StartConversation(SecondTableConversation);
-                }
+                ConversationManager.Instance.StartConversation(NPCDialouge);
+                bNPC = true;
             }
+            if (ConversationManager.Instance.IsConversationActive == false)
+            {
+                NPCS.SetActive(false);
+            }
+
         }
+
 
         if (other.transform.tag == "TV")
         {
