@@ -58,26 +58,6 @@ public class PlayerMovement3 : MonoBehaviour
         }
     }
 
-    private void OnCollisionStay(Collision collision)
-    {
-        if (collision.transform.tag == "NPC")
-        {
-            FButton.SetActive(true);
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                FButton.SetActive(false);
-                if (NpcNum == 0)
-                {
-                    ConversationManager.Instance.StartConversation(FirstNpcConversation);
-                    NpcNum += 1;
-                }
-                else
-                {
-                    ConversationManager.Instance.StartConversation(SecondNpcConversation);
-                }
-            }
-        }
-    }
 
     private void OnCollisionExit(Collision collision)
     {
@@ -89,18 +69,35 @@ public class PlayerMovement3 : MonoBehaviour
     }
 
 
-    private void OnTriggerStay(Collider other)
+    void OnTriggerStay(Collider other)
     {
-        FButton.SetActive(true);
-        if (other.transform.tag == "Trigger")
+        if (other.transform.tag == "Object")
         {
-            FButton.SetActive(false);
+            FButton.SetActive(true);
             if (Input.GetKeyDown(KeyCode.F))
             {
                 if (DoorNum == 0)
                 {
+                    FButton.SetActive(false);
                     ConversationManager.Instance.StartConversation(FireExtinguisher);
                     DoorNum += 1;
+                }
+            }
+        }
+
+        if (other.transform.tag == "NPC")
+        {
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                FButton.SetActive(false);
+                if (NpcNum == 0)
+                {
+                    ConversationManager.Instance.StartConversation(FirstNpcConversation);
+                    NpcNum += 1;
+                }
+                else
+                {
+                    ConversationManager.Instance.StartConversation(SecondNpcConversation);
                 }
             }
         }
