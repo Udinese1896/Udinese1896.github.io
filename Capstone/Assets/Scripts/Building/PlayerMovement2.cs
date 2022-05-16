@@ -102,7 +102,6 @@ public class PlayerMovement2 : MonoBehaviour
 
         if (other.transform.tag == "ComputerTable")
         {
-
             if (Input.GetKeyDown(KeyCode.F))
             {
                 FButton.SetActive(false);
@@ -120,25 +119,9 @@ public class PlayerMovement2 : MonoBehaviour
             }
         }
 
-        if (other.transform.tag == "TV")
-        {
-            FButton.SetActive(true);
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                FButton.SetActive(false);
-                Debug.Log("Interaction with Cube");
-            }
-        }
-
-
-
-
-
     }
     void OnTriggerExit(Collider other)
     {
         FButton.SetActive(false);
     }
 }
-
-
