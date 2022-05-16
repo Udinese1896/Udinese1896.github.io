@@ -48,6 +48,7 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Supercyan\Scripts\Items\ItemLogic.cs" />
+     <Compile Include="Assets\Scripts\Building\PlayerMovement3.cs" />
      <Compile Include="Assets\Scripts\Cube(Trigger)\FireTriggerCube.cs" />
      <Compile Include="Assets\Supercyan\Scripts\AimingAssets\CharacterMovementAnimator.cs" />
      <Compile Include="Assets\Scripts\Building\PlayerMovement2.cs" />
