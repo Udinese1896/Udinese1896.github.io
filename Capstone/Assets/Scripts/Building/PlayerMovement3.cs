@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement3 : MonoBehaviour
 {
+    public NPCConversation NpcConversation;
     public NPCConversation FirstNpcConversation;
     public NPCConversation SecondNpcConversation;
     public NPCConversation FireExtinguisher;
@@ -25,6 +26,7 @@ public class PlayerMovement3 : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         body = GetComponent<Rigidbody>();
+        ConversationManager.Instance.StartConversation(NpcConversation);
     }
 
     void Update()
