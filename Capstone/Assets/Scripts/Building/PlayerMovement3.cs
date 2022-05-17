@@ -11,6 +11,7 @@ public class PlayerMovement3 : MonoBehaviour
     public NPCConversation FirstNpcConversation;
     public NPCConversation SecondNpcConversation;
     public NPCConversation FireExtinguisher;
+    public NPCConversation DoorConversation;
     private Rigidbody body;
     bool wDown;
     Animator anim;
@@ -61,7 +62,6 @@ public class PlayerMovement3 : MonoBehaviour
         }
     }
 
-
     private void OnCollisionExit(Collision collision)
     {
         FButton.SetActive(false);
@@ -88,20 +88,23 @@ public class PlayerMovement3 : MonoBehaviour
             }
         }
 
-        if (other.transform.tag == "NPC")
+        if (other.transform.name == "Npc1")
         {
+            FButton.SetActive(true);
             if (Input.GetKeyDown(KeyCode.F))
             {
                 FButton.SetActive(false);
-                if (NpcNum == 0)
-                {
-                    ConversationManager.Instance.StartConversation(FirstNpcConversation);
-                    NpcNum += 1;
-                }
-                else
-                {
-                    ConversationManager.Instance.StartConversation(SecondNpcConversation);
-                }
+                ConversationManager.Instance.StartConversation(FirstNpcConversation);
+            }
+        }
+
+        if (other.transform.name == "DoorCube")
+        {
+            FButton.SetActive(true);
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                FButton.SetActive(false);
+                ConversationManager.Instance.StartConversation(DoorConversation);
             }
         }
     }

@@ -7,8 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement2 : MonoBehaviour
 {
-    public NPCConversation FirstTableConversation;
-    public NPCConversation SecondTableConversation;
+    public NPCConversation TableConversation;
+    public NPCConversation FirstConversation;
     public NPCConversation DoorConversation;
     private Rigidbody body;
     bool wDown;
@@ -25,6 +25,7 @@ public class PlayerMovement2 : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         body = GetComponent<Rigidbody>();
+        ConversationManager.Instance.StartConversation(FirstConversation);
     }
 
     void Update()
@@ -75,53 +76,35 @@ public class PlayerMovement2 : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        FButton.SetActive(true);
+        if (other.transform.name == "DoorCube")
+        {
+            FButton.SetActive(false);
+            ConversationManager.Instance.StartConversation(DoorConversation);
+        }
     }
 
     void OnTriggerStay(Collider other)
     {
+        FButton.SetActive(true);
         if (other.transform.tag == "Door")
         {
-            FButton.SetActive(true);
             if (Input.GetKeyDown(KeyCode.F))
             {
-                if (DoorNum == 0)
-                {
-                    FButton.SetActive(false);
-                    ConversationManager.Instance.StartConversation(DoorConversation);
-                    Debug.Log("Interaction with Door");
-                    DoorNum += 1;
-                }
-                else
-                {
-                    SceneManager.LoadScene("Building 2");
-                }
+                SceneManager.LoadScene("Building 2");
             }
         }
-
 
         if (other.transform.tag == "ComputerTable")
         {
             if (Input.GetKeyDown(KeyCode.F))
             {
                 FButton.SetActive(false);
-                if (interTablefirst == 0)
-                {
-
-                    Debug.Log("Interaction with Cube");
-                    ConversationManager.Instance.StartConversation(FirstTableConversation);
-                    interTablefirst += 1;
-                }
-                else
-                {
-                    ConversationManager.Instance.StartConversation(SecondTableConversation);
-                }
+                ConversationManager.Instance.StartConversation(TableConversation);
             }
         }
-
     }
-    void OnTriggerExit(Collider other)
-    {
-        FButton.SetActive(false);
-    }
+        void OnTriggerExit(Collider other)
+        {
+            FButton.SetActive(false);
+        }
 }
