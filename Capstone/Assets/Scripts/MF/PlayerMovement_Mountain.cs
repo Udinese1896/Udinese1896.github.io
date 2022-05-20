@@ -10,11 +10,13 @@ public class PlayerMovement_Mountain : MonoBehaviour
     public NPCConversation FirstDialouge;
     public NPCConversation FirstSmokeDialouge;
     public NPCConversation SecondSmokeDialouge;
+    public NPCConversation FirstNPCDialouge;
     public NPCConversation NPCDialouge;
     public NPCConversation FireDialouge;
     public NPCConversation FinalDialouge;
     public GameObject Smoke;
     public GameObject NPCS;
+    public GameObject obstacle;
     private Rigidbody body;
     bool wDown;
     Animator anim;
@@ -27,7 +29,9 @@ public class PlayerMovement_Mountain : MonoBehaviour
     private int interTablefirst = 0;
     private bool bFirstSmoke = false;
     private bool bSecondSmoke = false;
-    private bool bNPC = false;
+    private bool bFirstNPC = false;
+    private bool bSecondNPC = false;
+    private bool bFire = false;
 
     void Start()
     {
@@ -85,7 +89,7 @@ public class PlayerMovement_Mountain : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-
+        
     }
 
     void OnTriggerStay(Collider other)
@@ -113,31 +117,39 @@ public class PlayerMovement_Mountain : MonoBehaviour
             }
 
         }
-
-        if (other.transform.tag == "NPCCube")
+        if (other.transform.name == "FirstNPCCube")
         {
-
-            if (bFirstSmoke == true && bSecondSmoke == true &&bNPC==false)
+            if (bFirstSmoke == true && bSecondSmoke == true && bFirstNPC == false)
             {
-                ConversationManager.Instance.StartConversation(NPCDialouge);
-                bNPC = true;
-            }
-            if (ConversationManager.Instance.IsConversationActive == false)
-            {
-                NPCS.SetActive(false);
+                ConversationManager.Instance.StartConversation(FirstNPCDialouge);
+                bFirstNPC = true;
             }
 
         }
 
 
-        if (other.transform.tag == "TV")
+        if (other.transform.tag == "NPCCube")
         {
-            FButton.SetActive(true);
-            if (Input.GetKeyDown(KeyCode.F))
+            if (bFirstSmoke == true && bSecondSmoke == true && bFirstNPC == true &&bSecondNPC==false)
             {
-                FButton.SetActive(false);
-                Debug.Log("Interaction with Cube");
+                ConversationManager.Instance.StartConversation(NPCDialouge);
+                bSecondNPC = true;
             }
+            if (ConversationManager.Instance.IsConversationActive == false)
+            {
+                NPCS.SetActive(false);
+                obstacle.SetActive(false);
+            }
+        }
+
+        if (other.transform.name == "FireCube")
+        {
+            if (bFirstSmoke == true && bSecondSmoke == true && bFirstNPC == true && bSecondNPC == true &&bFire==false)
+            {
+                ConversationManager.Instance.StartConversation(FireDialouge);
+                bFire = true;
+            }
+
         }
 
 
