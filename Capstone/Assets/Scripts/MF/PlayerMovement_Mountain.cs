@@ -32,6 +32,7 @@ public class PlayerMovement_Mountain : MonoBehaviour
     private bool bFirstNPC = false;
     private bool bSecondNPC = false;
     private bool bFire = false;
+    private bool bFinal = false;
 
     void Start()
     {
@@ -111,11 +112,20 @@ public class PlayerMovement_Mountain : MonoBehaviour
                 ConversationManager.Instance.StartConversation(SecondSmokeDialouge);
                 bSecondSmoke = true;
             }
-            if (ConversationManager.Instance.IsConversationActive==false)
+            if (ConversationManager.Instance.IsConversationActive==false&&bFinal==false)
             {
                 Smoke.SetActive(false);
             }
-
+            else if(bFirstSmoke == true && bSecondSmoke == true && bFirstNPC == true && bSecondNPC == true && bFire == true&& bFinal==false)
+            {
+                ConversationManager.Instance.StartConversation(FinalDialouge);
+                bFinal = false;
+            }
+            if (ConversationManager.Instance.IsConversationActive == false && bFinal == true)
+            {
+                //게임 종료
+                Debug.Log("Game over");
+            }
         }
         if (other.transform.name == "FirstNPCCube")
         {
