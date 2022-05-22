@@ -7,20 +7,25 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement3 : MonoBehaviour
 {
-    public NPCConversation NpcConversation;
-    public NPCConversation FirstNpcConversation;
-    public NPCConversation SecondNpcConversation;
+    public NPCConversation FirstConversation;
+    public NPCConversation Npc1Conversation;
+    public NPCConversation Npc2Conversation;
+    public NPCConversation Npc3Conversation;
+    public NPCConversation Npc4Conversation;
     public NPCConversation FireExtinguisher;
     public NPCConversation DoorConversation;
     private Rigidbody body;
     bool wDown;
     Animator anim;
-    public GameObject FButton;
-    public GameObject FE;//소화기
+    public GameObject FireE; // 소화기
+    public GameObject FButton; // f버튼
+    public GameObject FE;//소화기 파티클
     public GameObject sPos;//발사 위치
+    public GameObject Fire; // 불
 
     public float moveSpeed = 10.0f;
     public float rotationSpeed = 5.0f;
+    private bool FEON = false;
     private int NpcNum = 0;
     private int DoorNum = 0;
 
@@ -28,7 +33,7 @@ public class PlayerMovement3 : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         body = GetComponent<Rigidbody>();
-        ConversationManager.Instance.StartConversation(NpcConversation);
+        ConversationManager.Instance.StartConversation(FirstConversation);
     }
 
     void Update()
@@ -54,12 +59,18 @@ public class PlayerMovement3 : MonoBehaviour
                 anim.SetBool("IsRun", false);
 
             if (Input.GetKeyDown(KeyCode.Space))
-            {
-                Instantiate(FE, sPos.transform.position, sPos.transform.rotation);
-            }
 
-
+                    Instantiate(FE, sPos.transform.position, sPos.transform.rotation);
+                    FE.SetActive(true);
         }
+    }
+
+    void OnParticleCollision(GameObject other)
+
+    {
+
+        Debug.Log("파티클 충돌");
+
     }
 
     private void OnCollisionExit(Collision collision)
@@ -74,7 +85,7 @@ public class PlayerMovement3 : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if (other.transform.tag == "Object")
+        if (other.transform.tag == "Trigger")
         {
             FButton.SetActive(true);
             if (Input.GetKeyDown(KeyCode.F))
@@ -84,6 +95,7 @@ public class PlayerMovement3 : MonoBehaviour
                     FButton.SetActive(false);
                     ConversationManager.Instance.StartConversation(FireExtinguisher);
                     DoorNum += 1;
+                    FireE.SetActive(true);
                 }
             }
         }
@@ -94,7 +106,27 @@ public class PlayerMovement3 : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.F))
             {
                 FButton.SetActive(false);
-                ConversationManager.Instance.StartConversation(FirstNpcConversation);
+                ConversationManager.Instance.StartConversation(Npc1Conversation);
+            }
+        }
+
+        if (other.transform.name == "Npc2")
+        {
+            FButton.SetActive(true);
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                FButton.SetActive(false);
+                ConversationManager.Instance.StartConversation(Npc2Conversation);
+            }
+        }
+
+        if (other.transform.name == "Npc3")
+        {
+            FButton.SetActive(true);
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                FButton.SetActive(false);
+                ConversationManager.Instance.StartConversation(Npc3Conversation);
             }
         }
 
@@ -107,6 +139,7 @@ public class PlayerMovement3 : MonoBehaviour
                 ConversationManager.Instance.StartConversation(DoorConversation);
             }
         }
+
     }
 
 

@@ -13,6 +13,7 @@ TagManager:
   - TV
   - Smoke
   - NPCCube
+  - Fire
   layers:
   - Default
   - TransparentFX
