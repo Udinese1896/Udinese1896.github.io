@@ -21,8 +21,11 @@ public class PlayerMovement_Mountain : MonoBehaviour
     bool wDown;
     Animator anim;
     public GameObject FButton;
-  //  public GameObject FE;//소화기
-  //  public GameObject sPos;//발사 위치
+    private GameObject CamObject;
+
+
+    //  public GameObject FE;//소화기
+    //  public GameObject sPos;//발사 위치
 
     public float moveSpeed = 10.0f;
     public float rotationSpeed = 5.0f;
@@ -39,7 +42,8 @@ public class PlayerMovement_Mountain : MonoBehaviour
         anim = GetComponent<Animator>();
         body = GetComponent<Rigidbody>();
         ConversationManager.Instance.StartConversation(FirstDialouge);
-       
+        CamObject = GameObject.Find("Main Camera");
+        CamObject.GetComponent<BGMManger>().PlayBGM("BGM");
     }
 
     void Update()
@@ -156,6 +160,7 @@ public class PlayerMovement_Mountain : MonoBehaviour
         {
             if (bFirstSmoke == true && bSecondSmoke == true && bFirstNPC == true && bSecondNPC == true &&bFire==false)
             {
+                CamObject.GetComponent<BGMManger>().PlayBGM("FIRE");
                 ConversationManager.Instance.StartConversation(FireDialouge);
                 bFire = true;
             }

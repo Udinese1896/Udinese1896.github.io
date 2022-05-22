@@ -26,6 +26,7 @@ public class PlayerMovement2 : MonoBehaviour
         anim = GetComponent<Animator>();
         body = GetComponent<Rigidbody>();
         ConversationManager.Instance.StartConversation(FirstConversation);
+
     }
 
     void Update()
