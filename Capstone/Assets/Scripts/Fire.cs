@@ -4,31 +4,42 @@ using UnityEngine;
 
 public class Fire : MonoBehaviour
 {
-    public ParticleSystem ps;
-    private int cnt =5;
+    public GameObject RealFire;//บา
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(cnt<=0)
-        {
-            Destroy(transform.gameObject);
-        }
+
     }
 
 
-
-     void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collider other)
     {
-        if (other.transform.tag == "PE")
+        if (other.tag == "Fire")
         {
-            Debug.Log("Test");
-            cnt--;
+            RealFire.SetActive(false);
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Fire")
+        {
+            RealFire.SetActive(false);
+        }
+    }
+
+    void OnParticleCollision(GameObject other)
+    {
+        if (other.tag == "Fire")
+        {
+            RealFire.SetActive(false);
         }
     }
 }

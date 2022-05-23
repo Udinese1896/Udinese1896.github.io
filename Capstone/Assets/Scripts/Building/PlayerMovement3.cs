@@ -21,7 +21,6 @@ public class PlayerMovement3 : MonoBehaviour
     public GameObject FButton; // f버튼
     public GameObject FE;//소화기 파티클
     public GameObject sPos;//발사 위치
-    public GameObject Fire; // 불
 
     public float moveSpeed = 10.0f;
     public float rotationSpeed = 5.0f;
@@ -65,13 +64,6 @@ public class PlayerMovement3 : MonoBehaviour
         }
     }
 
-    void OnParticleCollision(GameObject other)
-
-    {
-
-        Debug.Log("파티클 충돌");
-
-    }
 
     private void OnCollisionExit(Collision collision)
     {
@@ -79,7 +71,7 @@ public class PlayerMovement3 : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        FButton.SetActive(true);
+
     }
 
 
@@ -90,13 +82,9 @@ public class PlayerMovement3 : MonoBehaviour
             FButton.SetActive(true);
             if (Input.GetKeyDown(KeyCode.F))
             {
-                if (DoorNum == 0)
-                {
                     FButton.SetActive(false);
                     ConversationManager.Instance.StartConversation(FireExtinguisher);
-                    DoorNum += 1;
                     FireE.SetActive(true);
-                }
             }
         }
 
@@ -130,13 +118,27 @@ public class PlayerMovement3 : MonoBehaviour
             }
         }
 
-        if (other.transform.name == "DoorCube")
+        if (other.transform.name == "Npc4")
         {
             FButton.SetActive(true);
             if (Input.GetKeyDown(KeyCode.F))
             {
                 FButton.SetActive(false);
+                ConversationManager.Instance.StartConversation(Npc4Conversation);
+            }
+        }
+
+        if (other.transform.name == "DoorCube")
+        {
+            FButton.SetActive(true);
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                if (DoorNum == 0)
+                {
+                FButton.SetActive(false);
                 ConversationManager.Instance.StartConversation(DoorConversation);
+                DoorNum += 1;
+                }
             }
         }
 
