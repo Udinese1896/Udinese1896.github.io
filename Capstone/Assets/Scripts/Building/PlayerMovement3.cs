@@ -26,7 +26,7 @@ public class PlayerMovement3 : MonoBehaviour
     public float moveSpeed = 10.0f;
     public float rotationSpeed = 5.0f;
     private bool FEON = false;
-    private int NpcNum = 0;
+    private int EscapeNum = 0;
     private int DoorNum = 0;
 
     void Start()
@@ -74,8 +74,16 @@ public class PlayerMovement3 : MonoBehaviour
     {
         if (other.transform.name == "EscapeCube")
         {
-                    FButton.SetActive(false);
-                    ConversationManager.Instance.StartConversation(EscapeConversation);
+            if (EscapeNum == 0)
+            {
+                FButton.SetActive(false);
+                ConversationManager.Instance.StartConversation(EscapeConversation);
+                EscapeNum += 1;
+            }
+            else
+            {
+
+            }
         }
     }
 

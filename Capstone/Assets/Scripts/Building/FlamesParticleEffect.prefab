@@ -8481,10 +8481,10 @@ ParticleSystem:
     outside: 0
     enter: 0
     exit: 0
-    colliderQueryMode: 0
+    colliderQueryMode: 2
     radiusScale: 1
     primitives:
-    - {fileID: 3068913994404136386, guid: c6586cfa8b035af4c81ad626f9d84d4a, type: 3}
+    - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
