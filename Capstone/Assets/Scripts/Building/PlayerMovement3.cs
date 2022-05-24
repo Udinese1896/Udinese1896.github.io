@@ -13,6 +13,7 @@ public class PlayerMovement3 : MonoBehaviour
     public NPCConversation Npc3Conversation;
     public NPCConversation Npc4Conversation;
     public NPCConversation FireExtinguisher;
+    public NPCConversation EscapeConversation;
     public NPCConversation DoorConversation;
     private Rigidbody body;
     bool wDown;
@@ -71,7 +72,11 @@ public class PlayerMovement3 : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-
+        if (other.transform.name == "EscapeCube")
+        {
+                    FButton.SetActive(false);
+                    ConversationManager.Instance.StartConversation(EscapeConversation);
+        }
     }
 
 
@@ -141,6 +146,7 @@ public class PlayerMovement3 : MonoBehaviour
                 }
             }
         }
+
 
     }
 

@@ -79,9 +79,9 @@ public class PlayerMovement2 : MonoBehaviour
     {
         if (other.transform.name == "DoorCube")
         {
-            FButton.SetActive(false);
             ConversationManager.Instance.StartConversation(DoorConversation);
         }
+        FButton.SetActive(false);
     }
 
     void OnTriggerStay(Collider other)
