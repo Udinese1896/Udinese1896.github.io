@@ -20,7 +20,8 @@ public class PlayerMovement3 : MonoBehaviour
     Animator anim;
     public GameObject FireE; // 소화기
     public GameObject FButton; // f버튼
-    public GameObject FE;//소화기 파티클
+    public GameObject FEparticle;//소화기 파티클
+    public GameObject FEeffect; //소화기 이펙트
     public GameObject sPos;//발사 위치
 
     public float moveSpeed = 10.0f;
@@ -58,10 +59,12 @@ public class PlayerMovement3 : MonoBehaviour
             else
                 anim.SetBool("IsRun", false);
 
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (FEON==true&&Input.GetKeyDown(KeyCode.Space))
+            {
 
-                    Instantiate(FE, sPos.transform.position, sPos.transform.rotation);
-                    FE.SetActive(true);
+                Instantiate(FEparticle, sPos.transform.position, sPos.transform.rotation);
+                Instantiate(FEeffect, sPos.transform.position, sPos.transform.rotation);
+            }
         }
     }
 
@@ -98,6 +101,7 @@ public class PlayerMovement3 : MonoBehaviour
                     FButton.SetActive(false);
                     ConversationManager.Instance.StartConversation(FireExtinguisher);
                     FireE.SetActive(true);
+                    FEON = true;
             }
         }
 

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2950693039682207018}
   m_Layer: 0
   m_Name: Sphere
-  m_TagString: PE
+  m_TagString: Particle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

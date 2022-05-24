@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Fire : MonoBehaviour
 {
-    public GameObject RealFire;//บา
-
+    private int count = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,31 +14,19 @@ public class Fire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(count >=4)
+        Destroy(this.gameObject);
     }
 
 
-    private void OnCollisionEnter(Collider other)
-    {
-        if (other.tag == "Fire")
-        {
-            RealFire.SetActive(false);
-        }
-    }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Fire")
+        if (other.tag == "Particle")
         {
-            RealFire.SetActive(false);
+            // Debug.Log("test");
+            count++;
         }
     }
 
-    void OnParticleCollision(GameObject other)
-    {
-        if (other.tag == "Fire")
-        {
-            RealFire.SetActive(false);
-        }
-    }
 }
