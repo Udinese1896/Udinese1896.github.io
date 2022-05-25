@@ -27,8 +27,10 @@ public class PlayerMovement3 : MonoBehaviour
     public float moveSpeed = 10.0f;
     public float rotationSpeed = 5.0f;
     private bool FEON = false;
+    private bool bnpc4 = false;
     private int EscapeNum = 0;
     private int DoorNum = 0;
+
 
     void Start()
     {
@@ -59,9 +61,8 @@ public class PlayerMovement3 : MonoBehaviour
             else
                 anim.SetBool("IsRun", false);
 
-            if (FEON==true&&Input.GetKeyDown(KeyCode.Space))
+            if (FEON == true && Input.GetKeyDown(KeyCode.Space))
             {
-
                 Instantiate(FEparticle, sPos.transform.position, sPos.transform.rotation);
                 Instantiate(FEeffect, sPos.transform.position, sPos.transform.rotation);
             }
@@ -93,68 +94,81 @@ public class PlayerMovement3 : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
+        FButton.SetActive(true);
+
         if (other.transform.tag == "Trigger")
         {
-            FButton.SetActive(true);
             if (Input.GetKeyDown(KeyCode.F))
             {
-                    FButton.SetActive(false);
-                    ConversationManager.Instance.StartConversation(FireExtinguisher);
-                    FireE.SetActive(true);
-                    FEON = true;
+                FButton.SetActive(false);
+                ConversationManager.Instance.StartConversation(FireExtinguisher);
+                FireE.SetActive(true);
+                FEON = true;
             }
         }
 
         if (other.transform.name == "Npc1")
         {
-            FButton.SetActive(true);
-            if (Input.GetKeyDown(KeyCode.F))
+            if (FEON == false)
             {
-                FButton.SetActive(false);
-                ConversationManager.Instance.StartConversation(Npc1Conversation);
+                if (Input.GetKeyDown(KeyCode.F))
+                {
+                    FButton.SetActive(false);
+                    ConversationManager.Instance.StartConversation(Npc1Conversation);
+                }
             }
         }
 
         if (other.transform.name == "Npc2")
         {
-            FButton.SetActive(true);
-            if (Input.GetKeyDown(KeyCode.F))
+            if (FEON == false)
             {
-                FButton.SetActive(false);
-                ConversationManager.Instance.StartConversation(Npc2Conversation);
+                if (Input.GetKeyDown(KeyCode.F))
+                {
+                    FButton.SetActive(false);
+                    ConversationManager.Instance.StartConversation(Npc2Conversation);
+                }
             }
         }
 
         if (other.transform.name == "Npc3")
         {
-            FButton.SetActive(true);
-            if (Input.GetKeyDown(KeyCode.F))
+            if (FEON == false)
             {
-                FButton.SetActive(false);
-                ConversationManager.Instance.StartConversation(Npc3Conversation);
+                if (Input.GetKeyDown(KeyCode.F))
+                {
+                    FButton.SetActive(false);
+                    ConversationManager.Instance.StartConversation(Npc3Conversation);
+                }
             }
         }
 
         if (other.transform.name == "Npc4")
         {
-            FButton.SetActive(true);
-            if (Input.GetKeyDown(KeyCode.F))
+            if (bnpc4 == false)
             {
-                FButton.SetActive(false);
-                ConversationManager.Instance.StartConversation(Npc4Conversation);
+                if (Input.GetKeyDown(KeyCode.F))
+                {
+                    FButton.SetActive(false);
+                    ConversationManager.Instance.StartConversation(Npc4Conversation);
+                    bnpc4 = true;
+                }
+            }
+            if (ConversationManager.Instance.IsConversationActive == false && bnpc4 == true)
+            {
+                other.transform.parent.gameObject.SetActive(false);
             }
         }
 
         if (other.transform.name == "DoorCube")
         {
-            FButton.SetActive(true);
             if (Input.GetKeyDown(KeyCode.F))
             {
                 if (DoorNum == 0)
                 {
-                FButton.SetActive(false);
-                ConversationManager.Instance.StartConversation(DoorConversation);
-                DoorNum += 1;
+                    FButton.SetActive(false);
+                    ConversationManager.Instance.StartConversation(DoorConversation);
+                    DoorNum += 1;
                 }
             }
         }

@@ -8,33 +8,44 @@ using UnityEngine.SceneManagement;
 public class PlayerMovement_Mountain : MonoBehaviour
 {
     public NPCConversation FirstDialouge;
+
     public NPCConversation FirstSmokeDialouge;
     public NPCConversation SecondSmokeDialouge;
+
     public NPCConversation FirstNPCDialouge;
-    public NPCConversation NPCDialouge;
+    public NPCConversation SecondNPCDialouge;
+
     public NPCConversation FireDialouge;
+    public NPCConversation FireMiddleDialouge;
+
+    public NPCConversation FirstFEDialouge;
+    public NPCConversation SecondFEDialouge;
+
     public NPCConversation FinalDialouge;
-    public GameObject Smoke;
-    public GameObject NPCS;
-    public GameObject obstacle;
+
+    public GameObject FEparticle; //소화기 투사체
+    public GameObject FEeffect; //소화기 이펙트
+    public GameObject sPos; //소화기 투사체 발사 위치
+    public GameObject FButton; //버튼
+    public GameObject MyFE; //소화기 오브젝트(손에 장착되어있는)
+    public GameObject Fire; //소화기로 끌 불
+    public GameObject Obstacle;//불길을 막는 장애물
+    public GameObject Smoke;//담배꽁초
+    private float moveSpeed = 6.0f;
+    private float rotationSpeed = 5.0f;
     private Rigidbody body;
-    bool wDown;
-    Animator anim;
-    public GameObject FButton;
     private GameObject CamObject;
+    private bool wDown;
+    private Animator anim;
 
 
-    //  public GameObject FE;//소화기
-    //  public GameObject sPos;//발사 위치
-
-    public float moveSpeed = 10.0f;
-    public float rotationSpeed = 5.0f;
-    private int interTablefirst = 0;
     private bool bFirstSmoke = false;
     private bool bSecondSmoke = false;
     private bool bFirstNPC = false;
     private bool bSecondNPC = false;
     private bool bFire = false;
+    private bool bFireScond = false;
+    private bool bFE = false;
     private bool bFinal = false;
 
     void Start()
@@ -68,12 +79,23 @@ public class PlayerMovement_Mountain : MonoBehaviour
             else
                 anim.SetBool("IsRun", false);
 
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (MyFE.activeSelf==true)
             {
-              //  Instantiate(FE, sPos.transform.position, sPos.transform.rotation);
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    Instantiate(FEparticle, sPos.transform.position, sPos.transform.rotation);
+                    Instantiate(FEeffect, sPos.transform.position, sPos.transform.rotation);
+                }
             }
 
 
+        }
+
+        if(Fire.gameObject.activeSelf==false&&MyFE.activeSelf == true)
+        {
+            ConversationManager.Instance.StartConversation(SecondFEDialouge);
+            Obstacle.SetActive(false);
+            MyFE.SetActive(false);
         }
     }
 
@@ -118,9 +140,9 @@ public class PlayerMovement_Mountain : MonoBehaviour
             }
             if (ConversationManager.Instance.IsConversationActive==false&&bFinal==false)
             {
-                Smoke.SetActive(false);
+               Smoke.SetActive(false);
             }
-            else if(bFirstSmoke == true && bSecondSmoke == true && bFirstNPC == true && bSecondNPC == true && bFire == true&& bFinal==false)
+            else if(bFire == true&& bFinal==false)
             {
                 ConversationManager.Instance.StartConversation(FinalDialouge);
                 bFinal = false;
@@ -141,24 +163,27 @@ public class PlayerMovement_Mountain : MonoBehaviour
 
         }
 
-
         if (other.transform.tag == "NPCCube")
         {
-            if (bFirstSmoke == true && bSecondSmoke == true && bFirstNPC == true &&bSecondNPC==false)
+            if (bFirstNPC == true &&bSecondNPC==false)
             {
-                ConversationManager.Instance.StartConversation(NPCDialouge);
-                bSecondNPC = true;
+                FButton.SetActive(true);
+                if (Input.GetKeyDown(KeyCode.F))
+                {
+                    FButton.SetActive(false);
+                    ConversationManager.Instance.StartConversation(SecondNPCDialouge);
+                    bSecondNPC = true;
+                }
             }
-            if (ConversationManager.Instance.IsConversationActive == false)
+            if (ConversationManager.Instance.IsConversationActive == false&&bSecondNPC==true)
             {
-                NPCS.SetActive(false);
-                obstacle.SetActive(false);
+                other.gameObject.SetActive(false);
             }
         }
 
         if (other.transform.name == "FireCube")
         {
-            if (bFirstSmoke == true && bSecondSmoke == true && bFirstNPC == true && bSecondNPC == true &&bFire==false)
+            if (bSecondNPC == true &&bFire==false)
             {
                 CamObject.GetComponent<BGMManger>().PlayBGM("FIRE");
                 ConversationManager.Instance.StartConversation(FireDialouge);
@@ -166,11 +191,24 @@ public class PlayerMovement_Mountain : MonoBehaviour
             }
 
         }
+        if (other.transform.name == "FireSecondCube")
+        {
+            if (bFire == true&& bFireScond==false)
+            {
+                ConversationManager.Instance.StartConversation(FireMiddleDialouge);
+                bFireScond = true;
+            }
+        }
 
-
-
-
-
+        if (other.transform.name == "FECube")
+        {
+            if (bFireScond == true&&bFE==false)
+            {
+                ConversationManager.Instance.StartConversation(FirstFEDialouge);
+                MyFE.SetActive(true);
+                bFE =true;
+            }
+        }
     }
     void OnTriggerExit(Collider other)
     {

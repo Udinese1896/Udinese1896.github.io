@@ -5,6 +5,7 @@ using UnityEngine;
 public class FireTriggerCube : MonoBehaviour
 {
     public GameObject Fire;
+    public GameObject Obstacle;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,7 +15,8 @@ public class FireTriggerCube : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -22,6 +24,7 @@ public class FireTriggerCube : MonoBehaviour
       if(other.tag=="Player")
         {
             Fire.SetActive(true);
+            Obstacle.SetActive(true);
         }
     }
 }

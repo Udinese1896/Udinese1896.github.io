@@ -14,8 +14,8 @@ public class Fire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(count >=4)
-        Destroy(this.gameObject);
+        if (count >= 4)
+            this.gameObject.SetActive(false);
     }
 
 
