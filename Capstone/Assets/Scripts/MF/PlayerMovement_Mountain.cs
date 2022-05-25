@@ -35,7 +35,6 @@ public class PlayerMovement_Mountain : MonoBehaviour
     private float rotationSpeed = 5.0f;
     private Rigidbody body;
     private GameObject CamObject;
-    private bool wDown;
     private Animator anim;
 
 

@@ -94,10 +94,11 @@ public class PlayerMovement3 : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        FButton.SetActive(true);
+        
 
         if (other.transform.tag == "Trigger")
         {
+            FButton.SetActive(true);
             if (Input.GetKeyDown(KeyCode.F))
             {
                 FButton.SetActive(false);
@@ -111,6 +112,7 @@ public class PlayerMovement3 : MonoBehaviour
         {
             if (FEON == false)
             {
+                FButton.SetActive(true);
                 if (Input.GetKeyDown(KeyCode.F))
                 {
                     FButton.SetActive(false);
@@ -123,6 +125,7 @@ public class PlayerMovement3 : MonoBehaviour
         {
             if (FEON == false)
             {
+                FButton.SetActive(true);
                 if (Input.GetKeyDown(KeyCode.F))
                 {
                     FButton.SetActive(false);
@@ -135,6 +138,7 @@ public class PlayerMovement3 : MonoBehaviour
         {
             if (FEON == false)
             {
+                FButton.SetActive(true);
                 if (Input.GetKeyDown(KeyCode.F))
                 {
                     FButton.SetActive(false);
@@ -147,6 +151,7 @@ public class PlayerMovement3 : MonoBehaviour
         {
             if (bnpc4 == false)
             {
+                FButton.SetActive(true);
                 if (Input.GetKeyDown(KeyCode.F))
                 {
                     FButton.SetActive(false);
@@ -162,6 +167,7 @@ public class PlayerMovement3 : MonoBehaviour
 
         if (other.transform.name == "DoorCube")
         {
+            FButton.SetActive(true);
             if (Input.GetKeyDown(KeyCode.F))
             {
                 if (DoorNum == 0)

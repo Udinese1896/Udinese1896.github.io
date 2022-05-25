@@ -82,6 +82,7 @@
     <Compile Include="Assets\Supercyan\Scripts\ItemAssets\AnimatorOverridesApplier.cs" />
     <Compile Include="Assets\Supercyan\Scripts\ItemAssets\AccessoryWearLogic.cs" />
     <Compile Include="Assets\Scripts\CameraMovement.cs" />
+    <Compile Include="Assets\Scripts\MF\NPCMovement_Mountain.cs" />
     <Compile Include="Assets\Supercyan\Scripts\Items\ItemObject.cs" />
     <Compile Include="Assets\DialogueEditor\Assets\Scripts\EditableParameter.cs" />
     <Compile Include="Assets\Scripts\FireExtinguisher.cs" />
@@ -97,7 +98,6 @@
     <Compile Include="Assets\Supercyan\Scripts\ItemAssets\CharacterItemAnimator.cs" />
     <Compile Include="Assets\Supercyan\Scripts\AimingAssets\DirectAimController.cs" />
     <Compile Include="Assets\FurnishedCabin\Scripts\Player\PlayerLook.cs" />
-    <Compile Include="Assets\Scripts\Cube(Trigger)\DoorCube.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Supercyan\Scripts\CharacterMaker\CharacterBehaviorObject.cs" />
     <Compile Include="Assets\EffectExamples\Shared\Scripts\ParticleCollision.cs" />
@@ -138,7 +138,6 @@
     <Compile Include="Assets\Supercyan Character Pack Free Sample\Scripts\FreeCameraLogic.cs" />
     <Compile Include="Assets\EffectExamples\Shared\Scripts\GunAim.cs" />
     <Compile Include="Assets\Supercyan\Scripts\DemoAssets\DemoUI.cs" />
-    <Compile Include="Assets\Scripts\MF\NPCMovement_Mountain.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

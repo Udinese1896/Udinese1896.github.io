@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NPCMovement_Mountain : MonoBehaviour
 {
-    public GameObject Npc;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +20,7 @@ public class NPCMovement_Mountain : MonoBehaviour
     {
         if (collision.transform.tag == "Player")
         {
-            Npc.transform.LookAt(collision.transform);
+            this.transform.parent.transform.LookAt(collision.transform);
         }
     }
 
@@ -28,7 +28,7 @@ public class NPCMovement_Mountain : MonoBehaviour
     {
         if (other.transform.tag == "Player")
         {
-            Npc.transform.LookAt(other.transform);
+            this.transform.parent.transform.LookAt(other.transform);
         }
     }
 }
