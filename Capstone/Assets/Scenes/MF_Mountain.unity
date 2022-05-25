@@ -58777,8 +58777,7 @@ MonoBehaviour:
   FirstFEDialouge: {fileID: 1102346804}
   SecondFEDialouge: {fileID: 1924709786}
   FinalDialouge: {fileID: 381386686}
-  FEparticle: {fileID: 8136644421752499781, guid: 18df12e6cb1096743ae3b6529ce293da,
-    type: 3}
+  FEProj: {fileID: 8136644421752499781, guid: 18df12e6cb1096743ae3b6529ce293da, type: 3}
   FEeffect: {fileID: 3068913994403844514, guid: c6586cfa8b035af4c81ad626f9d84d4a,
     type: 3}
   sPos: {fileID: 1090327222}

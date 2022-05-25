@@ -23,7 +23,7 @@ public class PlayerMovement_Mountain : MonoBehaviour
 
     public NPCConversation FinalDialouge;
 
-    public GameObject FEparticle; //소화기 투사체
+    public GameObject FEProj; //소화기 투사체
     public GameObject FEeffect; //소화기 이펙트
     public GameObject sPos; //소화기 투사체 발사 위치
     public GameObject FButton; //버튼
@@ -82,7 +82,7 @@ public class PlayerMovement_Mountain : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
-                    Instantiate(FEparticle, sPos.transform.position, sPos.transform.rotation);
+                    Instantiate(FEProj, sPos.transform.position, sPos.transform.rotation);
                     Instantiate(FEeffect, sPos.transform.position, sPos.transform.rotation);
                 }
             }

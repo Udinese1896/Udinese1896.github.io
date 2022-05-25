@@ -17,7 +17,6 @@ public class FireExtinguisher : MonoBehaviour
     {
         time += Time.deltaTime;
         transform.Translate(Vector3.forward * 0.075f);
-       // Instantiate(Effect, transform.position, transform.rotation);
         if (time >= 2.0f)
             Destroy(transform.gameObject);
     }

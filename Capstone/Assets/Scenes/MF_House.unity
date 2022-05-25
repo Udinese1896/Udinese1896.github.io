@@ -321,7 +321,6 @@ GameObject:
   - component: {fileID: 211355541}
   - component: {fileID: 211355540}
   - component: {fileID: 211355539}
-  - component: {fileID: 211355537}
   m_Layer: 0
   m_Name: TableCube
   m_TagString: Table
@@ -343,18 +342,6 @@ Transform:
   m_Father: {fileID: 1339030408}
   m_RootOrder: 34
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &211355537
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 211355535}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7141a1338dfa6d9459089eb033d47a15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &211355539
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1627,7 +1614,6 @@ GameObject:
   - component: {fileID: 1570032685}
   - component: {fileID: 1570032684}
   - component: {fileID: 1570032683}
-  - component: {fileID: 1570032686}
   m_Layer: 0
   m_Name: DoorCube
   m_TagString: Door
@@ -1711,18 +1697,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1570032680}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1570032686
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1570032680}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7141a1338dfa6d9459089eb033d47a15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!850595691 &1682494714
 LightingSettings:
   m_ObjectHideFlags: 0
