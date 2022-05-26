@@ -35,6 +35,10 @@ public class Button : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
     }
+    public void ReStart()
+    {
+        SceneManager.LoadScene("Building ending");
+    }
 }
 
 

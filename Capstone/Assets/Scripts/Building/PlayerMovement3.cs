@@ -178,7 +178,7 @@ public class PlayerMovement3 : MonoBehaviour
                 }
                 else
                 {
-                    
+                    SceneManager.LoadScene("Building ending");
                 }
             }
         }
