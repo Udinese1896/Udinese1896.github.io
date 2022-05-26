@@ -14,10 +14,10 @@ public class PlayerMovement_House : MonoBehaviour
     bool wDown;
     Animator anim;
     public GameObject FButton;
-    public GameObject FE;//소화기
-    public GameObject sPos;//발사 위치
 
-    public float moveSpeed = 10.0f;
+    public GameObject backPack;
+    public GameObject backPackOnTable;
+    public float moveSpeed = 5.0f;
     public float rotationSpeed = 5.0f;
     private int interTablefirst = 0;
     private bool bCangoOutside = false;
@@ -49,13 +49,6 @@ public class PlayerMovement_House : MonoBehaviour
                 anim.SetBool("IsRun", true);
             else
                 anim.SetBool("IsRun", false);
-
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                Instantiate(FE, sPos.transform.position, sPos.transform.rotation);
-            }
-
-
         }
     }
 
@@ -114,6 +107,11 @@ public class PlayerMovement_House : MonoBehaviour
                 {
                     ConversationManager.Instance.StartConversation(SecondTableConversation);
                 }
+            }
+            if (bCangoOutside == true && ConversationManager.Instance.IsConversationActive == false)
+            {
+                backPack.SetActive(true);
+                backPackOnTable.SetActive(false);
             }
         }
 

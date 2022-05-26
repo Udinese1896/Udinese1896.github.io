@@ -31,7 +31,7 @@ public class PlayerMovement_Mountain : MonoBehaviour
     public GameObject Fire; //소화기로 끌 불
     public GameObject Obstacle;//불길을 막는 장애물
     public GameObject Smoke;//담배꽁초
-    private float moveSpeed = 6.0f;
+    private float moveSpeed = 5.0f;
     private float rotationSpeed = 5.0f;
     private Rigidbody body;
     private GameObject CamObject;
@@ -141,17 +141,18 @@ public class PlayerMovement_Mountain : MonoBehaviour
             {
                Smoke.SetActive(false);
             }
-            else if(bFire == true&& bFinal==false)
+
+             if(bFE == true&& bFinal==false)
             {
                 ConversationManager.Instance.StartConversation(FinalDialouge);
-                bFinal = false;
+                bFinal = true;
             }
             if (ConversationManager.Instance.IsConversationActive == false && bFinal == true)
             {
-                //게임 종료
-                Debug.Log("Game over");
+                SceneManager.LoadScene("MF_Ending");
             }
         }
+        
         if (other.transform.name == "FirstNPCCube")
         {
             if (bFirstSmoke == true && bSecondSmoke == true && bFirstNPC == false)
@@ -206,6 +207,19 @@ public class PlayerMovement_Mountain : MonoBehaviour
                 ConversationManager.Instance.StartConversation(FirstFEDialouge);
                 MyFE.SetActive(true);
                 bFE =true;
+            }
+        }
+  
+        if (other.transform.name == "FinalCube")
+        {
+            if (bFE == true && bFinal == false)
+            {
+                ConversationManager.Instance.StartConversation(FinalDialouge);
+                bFinal = true;
+            }
+            if (ConversationManager.Instance.IsConversationActive == false && bFinal == true)
+            {
+                SceneManager.LoadScene("MF_Ending");
             }
         }
     }

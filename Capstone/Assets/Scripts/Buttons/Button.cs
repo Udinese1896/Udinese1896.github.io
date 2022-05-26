@@ -39,6 +39,16 @@ public class Button : MonoBehaviour
     {
         SceneManager.LoadScene("Building ending");
     }
+    public void ReStartMFVideo()
+    {
+        GameObject.Find("Canvas").GetComponent<Ending>().restartVideo();
+    }
+    public void OnPauseVideo()
+    {
+        GameObject.Find("Canvas").GetComponent<Ending>().OnPauseVideo();
+    }
+
+
 }
 
 
