@@ -176,6 +176,10 @@ public class PlayerMovement3 : MonoBehaviour
                     ConversationManager.Instance.StartConversation(DoorConversation);
                     DoorNum += 1;
                 }
+                else
+                {
+                    
+                }
             }
         }
 
